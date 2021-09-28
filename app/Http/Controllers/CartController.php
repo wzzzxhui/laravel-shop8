@@ -15,10 +15,14 @@ class CartController extends Controller
     //使用了预加载之后，Laravel 会通过类似 select * from product_skus where id in (xxxx) 的方式把原本需要多条 SQL 查询的数据用一条 SQL 就查到了，
     //大大提升了执行效率。同时 Laravel 还支持通过 . 的方式加载多层级的关联关系，这里我们就通过 . 提前加载了与商品 SKU 关联的商品。
 
+
+
     public function index(Request $request)
     {
         $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
-        return view('cart.index', ['cartItems' => $cartItems]);
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
+
+        return view('cart.index', ['cartItems' => $cartItems, 'addresses' => $addresses]);
     }
 
     public function add(AddCartRequest $request)

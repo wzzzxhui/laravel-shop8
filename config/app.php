@@ -79,7 +79,7 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
+    'order_ttl' => 30,
     'locale' => 'zh_CN',
 
     /*
