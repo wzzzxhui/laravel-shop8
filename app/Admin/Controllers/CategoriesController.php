@@ -1,5 +1,6 @@
 <?php
 //php artisan admin:make CategoriesController  --model=App\Models\Category
+// php artisan admin:export-seed   菜单改变，执行更新菜单seeder   AdminTablesSeeder
 namespace App\Admin\Controllers;
 
 use App\Models\Category;
